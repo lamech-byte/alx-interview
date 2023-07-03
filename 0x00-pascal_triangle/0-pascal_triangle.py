@@ -3,6 +3,7 @@
 0-pascal_triangle.py
 """
 
+
 def pascal_triangle(n):
     """
     Generate Pascal's Triangle up to the given number of rows.
