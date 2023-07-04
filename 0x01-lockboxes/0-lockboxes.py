@@ -21,7 +21,7 @@ def canUnlockAll(boxes):
         keys = boxes[box]  # Get the keys inside the current box
 
         for key in keys:
-            if key < n and not visited[key]:
+            if 0 <= key < n and not visited[key]:
                 visited[key] = True  # Mark the box as visited
                 queue.append(key)  # Add the box to the queue
 
@@ -30,10 +30,10 @@ def canUnlockAll(boxes):
 
 if __name__ == '__main__':
     boxes = [[1], [2], [3], [4], []]
-    print(canUnlockAll(boxes))  # Output: True
+    print(can_unlock_all(boxes))  # Output: True
 
     boxes = [[1, 4, 6], [2], [0, 4, 1], [5, 6, 2], [3], [4, 1], [6]]
-    print(canUnlockAll(boxes))  # Output: True
+    print(can_unlock_all(boxes))  # Output: True
 
     boxes = [[1, 4], [2], [0, 4, 1], [3], [], [4, 1], [5, 6]]
-    print(canUnlockAll(boxes))  # Output: False
+    print(can_unlock_all(boxes))  # Output: False
