@@ -1,4 +1,16 @@
+#!/usr/bin/python3
+
+
 def canUnlockAll(boxes):
+    """
+    Check if all the boxes can be opened.
+
+    Args:
+        boxes (list): List of lists representing the boxes and their corresponding keys.
+
+    Returns:
+        bool: True if all boxes can be opened, False otherwise.
+    """
     n = len(boxes)  # Number of boxes
     visited = [False] * n  # Keep track of visited boxes
     visited[0] = True  # Mark the first box as visited
@@ -14,3 +26,14 @@ def canUnlockAll(boxes):
                 queue.append(key)  # Add the box to the queue
 
     return all(visited)
+
+
+if __name__ == '__main__':
+    boxes = [[1], [2], [3], [4], []]
+    print(canUnlockAll(boxes))  # Output: True
+
+    boxes = [[1, 4, 6], [2], [0, 4, 1], [5, 6, 2], [3], [4, 1], [6]]
+    print(canUnlockAll(boxes))  # Output: True
+
+    boxes = [[1, 4], [2], [0, 4, 1], [3], [], [4, 1], [5, 6]]
+    print(canUnlockAll(boxes))  # Output: False
