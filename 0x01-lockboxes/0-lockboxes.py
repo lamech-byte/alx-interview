@@ -14,11 +14,11 @@ def canUnlockAll(boxes):
     num_boxes = len(boxes)
     unlocked = [False] * num_boxes
     unlocked[0] = True
+    keys = boxes[0]
 
-    for i in range(num_boxes):
-        if unlocked[i]:
-            for key in boxes[i]:
-                if key < num_boxes and not unlocked[key]:
-                    unlocked[key] = True
+    for key in keys:
+        if key < num_boxes:
+            unlocked[key] = True
+            keys += boxes[key]
 
     return all(unlocked)
