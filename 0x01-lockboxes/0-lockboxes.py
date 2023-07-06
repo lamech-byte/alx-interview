@@ -1,18 +1,24 @@
 #!/usr/bin/python3
 
+"""
+Module: 0-lockboxes
+Contains a method `canUnlockAll` that determines if all the boxes can be opened.
+"""
+
+
 def canUnlockAll(boxes):
-    n = len(boxes)  # Number of boxes
-    visited = [False] * n  # Keep track of visited boxes
-    visited[0] = True  # Mark the first box as visited
-    queue = [0]  # Start the queue with the first box
+    """
+    Method: canUnlockAll
+    Determines if all the boxes can be opened.
+    """
+    num_boxes = len(boxes)
+    unlocked = [False] * num_boxes
+    unlocked[0] = True
 
-    while queue:
-        box = queue.pop(0)  # Get the next box from the queue
-        keys = boxes[box]  # Get the keys inside the current box
+    for i in range(num_boxes):
+        if unlocked[i]:
+            for key in boxes[i]:
+                if key < num_boxes and not unlocked[key]:
+                    unlocked[key] = True
 
-        for key in keys:
-            if key < n and not visited[key]:
-                visited[key] = True  # Mark the box as visited
-                queue.append(key)  # Add the box to the queue
-
-    return all(visited)
+    return all(unlocked)
