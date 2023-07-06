@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
 Module: 0-lockboxes
-Contains a method `canUnlockAll` that determines if all the boxes can be opened.
+Contains a method `canUnlockAll` that determines if
+all the boxes can be opened.
 """
 
 
