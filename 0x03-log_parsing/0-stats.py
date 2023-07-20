@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
 
+
 def print_stats(file_sizes, status_codes):
     total_size = sum(file_sizes)
     print("File size: {}".format(total_size))
@@ -8,9 +9,13 @@ def print_stats(file_sizes, status_codes):
         if status_codes[code] > 0:
             print("{}: {}".format(code, status_codes[code]))
 
+
 def main():
     file_sizes = []
-    status_codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+    status_codes = {
+        200: 0,
+        301: 0,
+        400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
     count = 0
 
     try:
