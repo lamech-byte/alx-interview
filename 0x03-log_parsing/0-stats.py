@@ -24,6 +24,8 @@ def main():
             if count > 0 and count % 10 == 0:
                 print_stats(file_sizes, status_codes)
             parts = line.split(" ")
+            if len(parts) < 9:
+                continue
             try:
                 size = int(parts[-1])
                 status_code = int(parts[-2])
