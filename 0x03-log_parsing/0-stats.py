@@ -35,9 +35,7 @@ def main():
             except ValueError:
                 pass
     except KeyboardInterrupt:
-        pass
-
-    print_stats(file_sizes, status_codes)
+        print_stats(file_sizes, status_codes)  # Print stats before exiting on Ctrl+C
 
 
 if __name__ == "__main__":
