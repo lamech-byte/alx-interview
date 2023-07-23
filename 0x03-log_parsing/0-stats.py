@@ -3,14 +3,24 @@ import sys
 
 
 def print_stats(file_sizes, status_codes):
+    """
+    Print statistics based on file sizes and status codes.
+
+    Args:
+        file_sizes (list): List of file sizes.
+        status_codes (dict): Dictionary of status codes and their occurrences.
+    """
     total_size = sum(file_sizes)
-    print("File size: {}".format(total_size))
+    print(f"File size: {total_size}")
     for code in sorted(status_codes.keys()):
         if status_codes[code] > 0:
-            print("{}: {}".format(code, status_codes[code]))
+            print(f"{code}: {status_codes[code]}")
 
 
 def main():
+    """
+    Read stdin line by line, compute metrics, and print statistics.
+    """
     file_sizes = []
     status_codes = {
         200: 0,
