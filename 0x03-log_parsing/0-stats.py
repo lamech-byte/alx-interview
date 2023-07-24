@@ -3,42 +3,34 @@
 This script is a log parsing tool that reads stdin line by line,
 computes metrics, and prints statistics based on file
 sizes and status codes.
-    """
+"""
 import sys
 
-
-def print_stats(file_sizes, status_codes):
+def is_valid_log_line(line):
     """
-    Print statistics based on file sizes and status codes.
+    Check if the log line matches the specified format.
 
     Args:
-        file_sizes (list): List of file sizes.
-        status_codes (dict): Dictionary of status codes and their occurrences.
-    """
-    total_size = sum(file_sizes)
-    print(f"File size: {total_size}")
-    for code in sorted(status_codes.keys()):
-        if status_codes[code] > 0:
-            print(f"{code}: {status_codes[code]}")
+        line (str): The log line to check.
 
+    Returns:
+        bool: True if the line is valid, False otherwise.
+    """
+    parts = line.split()
+    return len(parts) >= 9 and parts[6] == '"GET' and parts[8].isdigit()
+
+def print_stats(file_sizes, status_codes):
+    # ... (rest of the function remains the same)
 
 def main():
-    """
-    Read stdin line by line, compute metrics, and print statistics.
-    """
-    file_sizes = []
-    status_codes = {
-        200: 0,
-        301: 0,
-        400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
-    count = 0
+    # ... (rest of the function remains the same)
 
     try:
         for line in sys.stdin:
             count += 1
-            parts = line.split(" ")
-            if len(parts) < 9:
+            if not is_valid_log_line(line):
                 continue
+            parts = line.split()
             try:
                 size = int(parts[-1])
                 status_code = int(parts[-2])
@@ -54,7 +46,6 @@ def main():
         pass
 
     print_stats(file_sizes, status_codes)
-
 
 if __name__ == "__main__":
     main()
