@@ -20,7 +20,6 @@ def is_valid_log_line(line):
     parts = line.split()
     return len(parts) == 9 and parts[6] == '"GET' and parts[8].isdigit()
 
-
 def print_stats(file_sizes, status_codes):
     """
     Print statistics based on file sizes and status codes.
