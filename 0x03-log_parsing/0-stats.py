@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+"""
+    Print statistics based on file sizes and status codes.
+
+    Args:
+        file_sizes (list): List of file sizes.
+        status_codes (dict): Dictionary of status codes and their occurrences.
+    """
 import sys
 
 
