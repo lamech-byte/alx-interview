@@ -7,6 +7,20 @@ sizes and status codes.
 import sys
 
 
+def is_valid_log_line(line):
+    """
+    Check if the log line matches the specified format.
+
+    Args:
+        line (str): The log line to check.
+
+    Returns:
+        bool: True if the line is valid, False otherwise.
+    """
+    parts = line.split()
+    return len(parts) == 9 and parts[6] == '"GET' and parts[8].isdigit()
+
+
 def print_stats(file_sizes, status_codes):
     """
     Print statistics based on file sizes and status codes.
@@ -30,7 +44,13 @@ def main():
     status_codes = {
         200: 0,
         301: 0,
-        400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+        400: 0,
+        401: 0,
+        403: 0,
+        404: 0,
+        405: 0,
+        500: 0
+    }
     count = 0
 
     try:
@@ -47,6 +67,7 @@ def main():
                     status_codes[status_code] += 1
             except ValueError:
                 pass
+
             if count > 0 and count % 10 == 0:
                 print_stats(file_sizes, status_codes)
 
@@ -54,20 +75,6 @@ def main():
         pass
 
     print_stats(file_sizes, status_codes)
-
-
-def is_valid_log_line(line):
-    """
-    Check if the log line matches the specified format.
-
-    Args:
-        line (str): The log line to check.
-
-    Returns:
-        bool: True if the line is valid, False otherwise.
-    """
-    parts = line.split()
-    return len(parts) >= 9 and parts[6] == '"GET' and parts[8].isdigit()
 
 
 if __name__ == "__main__":
