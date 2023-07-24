@@ -6,6 +6,7 @@ sizes and status codes.
 """
 import sys
 
+
 def is_valid_log_line(line):
     """
     Check if the log line matches the specified format.
@@ -19,8 +20,10 @@ def is_valid_log_line(line):
     parts = line.split()
     return len(parts) >= 9 and parts[6] == '"GET' and parts[8].isdigit()
 
+
 def print_stats(file_sizes, status_codes):
     # ... (rest of the function remains the same)
+
 
 def main():
     # ... (rest of the function remains the same)
@@ -46,6 +49,7 @@ def main():
         pass
 
     print_stats(file_sizes, status_codes)
+
 
 if __name__ == "__main__":
     main()
