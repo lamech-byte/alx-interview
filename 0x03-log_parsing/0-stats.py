@@ -31,8 +31,6 @@ def main():
     try:
         for line in sys.stdin:
             count += 1
-            if count > 0 and count % 10 == 0:
-                print_stats(file_sizes, status_codes)
             parts = line.split(" ")
             if len(parts) < 9:
                 continue
@@ -44,8 +42,14 @@ def main():
                     status_codes[status_code] += 1
             except ValueError:
                 pass
+            
+            if count > 0 and count % 10 == 0:
+                print_stats(file_sizes, status_codes)
+
     except KeyboardInterrupt:
-        print_stats(file_sizes, status_codes)  # Print stats before exiting on Ctrl+C
+        pass
+
+    print_stats(file_sizes, status_codes)
 
 
 if __name__ == "__main__":
