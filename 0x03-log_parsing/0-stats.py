@@ -7,26 +7,31 @@ sizes and status codes.
 import sys
 
 
-def is_valid_log_line(line):
+def print_stats(file_sizes, status_codes):
     """
-    Check if the log line matches the specified format.
+    Print statistics based on file sizes and status codes.
 
     Args:
-        line (str): The log line to check.
-
-    Returns:
-        bool: True if the line is valid, False otherwise.
+        file_sizes (list): List of file sizes.
+        status_codes (dict): Dictionary of status codes and their occurrences.
     """
-    parts = line.split()
-    return len(parts) >= 9 and parts[6] == '"GET' and parts[8].isdigit()
-
-
-def print_stats(file_sizes, status_codes):
-    # ... (rest of the function remains the same)
+    total_size = sum(file_sizes)
+    print(f"File size: {total_size}")
+    for code in sorted(status_codes.keys()):
+        if status_codes[code] > 0:
+            print(f"{code}: {status_codes[code]}")
 
 
 def main():
-    # ... (rest of the function remains the same)
+    """
+    Read stdin line by line, compute metrics, and print statistics.
+    """
+    file_sizes = []
+    status_codes = {
+        200: 0,
+        301: 0,
+        400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+    count = 0
 
     try:
         for line in sys.stdin:
@@ -49,6 +54,20 @@ def main():
         pass
 
     print_stats(file_sizes, status_codes)
+
+
+def is_valid_log_line(line):
+    """
+    Check if the log line matches the specified format.
+
+    Args:
+        line (str): The log line to check.
+
+    Returns:
+        bool: True if the line is valid, False otherwise.
+    """
+    parts = line.split()
+    return len(parts) >= 9 and parts[6] == '"GET' and parts[8].isdigit()
 
 
 if __name__ == "__main__":
