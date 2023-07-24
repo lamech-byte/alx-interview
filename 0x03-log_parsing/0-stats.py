@@ -41,7 +41,7 @@ def main():
                 if status_code in status_codes:
                     status_codes[status_code] += 1
             except ValueError:
-                pass  
+                pass
             if count > 0 and count % 10 == 0:
                 print_stats(file_sizes, status_codes)
 
