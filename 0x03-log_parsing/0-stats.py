@@ -4,21 +4,8 @@ This script is a log parsing tool that reads stdin line by line,
 computes metrics, and prints statistics based on file
 sizes and status codes.
 """
+
 import sys
-
-
-def is_valid_log_line(line):
-    """
-    Check if the log line matches the specified format.
-
-    Args:
-        line (str): The log line to check.
-
-    Returns:
-        bool: True if the line is valid, False otherwise.
-    """
-    parts = line.split()
-    return len(parts) == 9 and parts[6] == '"GET' and parts[8].isdigit()
 
 
 def print_stats(file_sizes, status_codes):
@@ -44,21 +31,15 @@ def main():
     status_codes = {
         200: 0,
         301: 0,
-        400: 0,
-        401: 0,
-        403: 0,
-        404: 0,
-        405: 0,
-        500: 0
-    }
+        400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
     count = 0
 
     try:
         for line in sys.stdin:
             count += 1
-            if not is_valid_log_line(line):
+            parts = line.split(" ")
+            if len(parts) < 9:
                 continue
-            parts = line.split()
             try:
                 size = int(parts[-1])
                 status_code = int(parts[-2])
@@ -67,7 +48,7 @@ def main():
                     status_codes[status_code] += 1
             except ValueError:
                 pass
-
+            
             if count > 0 and count % 10 == 0:
                 print_stats(file_sizes, status_codes)
 
