@@ -29,14 +29,16 @@ def validUTF8(data):
 
     def check_next_bytes(start_idx, num_bytes):
         """
-        Checks the next 'num_bytes' bytes to ensure they follow the pattern 10xxxxxx.
+        Checks the next 'num_bytes' bytes to ensure they follow the pattern
+        10xxxxxx.
 
         Args:
             start_idx (int): The index of the current byte in the 'data' list.
             num_bytes (int): The number of bytes to check.
 
         Returns:
-            bool: True if the next 'num_bytes' bytes are valid, else return False.
+            bool: True if the next 'num_bytes' bytes are valid, else return
+            False.
         """
         for i in range(start_idx + 1, start_idx + num_bytes):
             if i >= len(data) or data[i] & 0xC0 != 0x80:
@@ -62,7 +64,9 @@ if __name__ == "__main__":
     data = [65]
     print(validUTF8(data))  # True
 
-    data = [80, 121, 116, 104, 111, 110, 32, 105, 115, 32, 99, 111, 111, 108, 33]
+    data = [
+        80, 121, 116, 104, 111, 110, 32, 105, 115, 32, 99, 111, 111, 108, 33
+    ]
     print(validUTF8(data))  # True
 
     data = [229, 65, 127, 256]
