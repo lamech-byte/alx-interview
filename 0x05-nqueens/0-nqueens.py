@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 import sys
 
-
-def is_safe(board, row, col):
+def is_safe(board, row, col, N):
     # Check if there is a queen in the same column
     for i in range(row):
         if board[i][col] == 1:
@@ -14,34 +13,31 @@ def is_safe(board, row, col):
             return False
 
     # Check upper right diagonal
-    for i, j in zip(range(row, -1, -1), range(col, len(board))):
+    for i, j in zip(range(row, -1, -1), range(col, N)):
         if board[i][j] == 1:
             return False
 
     return True
-
 
 def nqueens(N, row=0, board=None, solutions=[]):
     if board is None:
         board = [[0 for _ in range(N)] for _ in range(N)]
 
     if row == N:
-        solutions.append([[i, row] for i, row in enumerate(board)])
+        solutions.append([[i, board[i].index(1)] for i in range(N)])
         return
 
     for col in range(N):
-        if is_safe(board, row, col):
+        if is_safe(board, row, col, N):
             board[row][col] = 1
             nqueens(N, row + 1, board, solutions)
             board[row][col] = 0
-
 
 def print_solutions(N):
     solutions = []
     nqueens(N, 0, None, solutions)
     for solution in solutions:
         print(solution)
-
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
