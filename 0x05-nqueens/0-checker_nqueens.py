@@ -4,20 +4,22 @@ import subprocess
 
 def run_command(command):
     try:
-        result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-        return result.stdout, result.returncode
+        result = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        stdout, stderr = result.communicate()
+        stdout_str = stdout.decode('utf-8').strip()
+        return stdout_str, result.returncode
     except FileNotFoundError:
         return "", 1
 
 def test_case(test_input, expected_output):
-    command = f"./0-nqueens.py {test_input}"
+    command = ["./0-nqueens.py", test_input]
     output, returncode = run_command(command)
     
     print(f"Input: {test_input}")
     print(f"Expected Output:")
     print(expected_output)
     print(f"Output:")
-    print(output.strip())
+    print(output)
     
     if returncode == 0 and output.strip() == expected_output.strip():
         print("Test Passed!")
