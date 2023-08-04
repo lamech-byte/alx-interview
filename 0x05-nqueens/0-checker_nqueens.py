@@ -4,10 +4,9 @@ import subprocess
 
 def run_command(command):
     try:
-        result = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        result = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
         stdout, stderr = result.communicate()
-        stdout_str = stdout.decode('utf-8').strip()
-        return stdout_str, result.returncode
+        return stdout.strip(), result.returncode
     except FileNotFoundError:
         return "", 1
 
