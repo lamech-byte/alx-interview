@@ -11,9 +11,3 @@ if __name__ == "__main__":
 
     rotate_2d_matrix(matrix)
     print(matrix)
-
-jessevhedden$
-jessevhedden$ ./main_0.py
-[[7, 4, 1],
-[8, 5, 2],
-[9, 6, 3]]
