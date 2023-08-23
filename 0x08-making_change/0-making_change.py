@@ -38,7 +38,6 @@ def makeChange(coins, total):
         return dp[total]
 
 
-# Example usage
 if __name__ == "__main__":
     coins = [1, 2, 25]
     total_amount = 37
