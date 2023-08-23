@@ -26,10 +26,7 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    """
-    Initialize an array to store the minimum number of coins needed
-    for each total
-    """
+
     dp = [float('inf')] * (total + 1)
     dp[0] = 0
 
@@ -43,7 +40,6 @@ def makeChange(coins, total):
         return dp[total]
 
 
-# Example usage
 if __name__ == "__main__":
     coins = [1, 2, 25]
     total_amount = 37
