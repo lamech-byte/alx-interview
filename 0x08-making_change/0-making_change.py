@@ -1,13 +1,15 @@
 #!/usr/bin/python3
 """
 0-making_change.py
-Module to calculate the fewest number of coins needed to meet a given amount total.
+Module to calculate the fewest number of coins needed to meet a given
+amount total.
 """
 
 
 def makeChange(coins, total):
     """
-    Calculate the fewest number of coins needed to meet a given amount total.
+    Calculate the fewest number of coins needed to meet a given
+    amount total.
 
     Args:
     coins (list): List of coin values available for making change.
@@ -16,13 +18,17 @@ def makeChange(coins, total):
     Returns:
     int: The fewest number of coins needed to meet the total amount.
          If the total is 0 or less, returns 0.
-         If the total cannot be met by any combination of the available coins, returns -1.
+         If the total cannot be met by any combination of the available
+         coins, returns -1.
 
     Algorithm:
-    This function utilizes dynamic programming to solve the coin change problem.
+    This function utilizes dynamic programming to solve the coin change
+    problem.
     It builds an array 'dp' where dp[i] represents the minimum number of coins
-    needed to achieve the amount 'i'. It iterates through the coin values and updates
-    the 'dp' array incrementally to calculate the minimum coins required for each amount.
+    needed to achieve the amount 'i'. It iterates through the coin values
+    and updates
+    the 'dp' array incrementally to calculate the minimum coins required
+    for each amount.
     The final result is stored in dp[total].
 
     Example:
