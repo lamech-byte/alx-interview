@@ -7,7 +7,21 @@ amount total.
 
 
 def makeChange(coins, total):
+"""
+    Calculate the fewest number of coins needed to meet a given amount
+    total.
 
+    Args:
+    coins (list): List of coin values available for making change.
+    total (int): The target amount to be achieved using the available
+    coins.
+
+    Returns:
+    int: The fewest number of coins needed to meet the total amount.
+         If the total is 0 or less, returns 0.
+         If the total cannot be met by any combination of the available
+         coins, returns -1.
+    """
     if total <= 0:
         return 0
     dp = [float('inf')] * (total + 1)
