@@ -5,6 +5,7 @@ Module to calculate the fewest number of coins needed to
 meet a given amount total.
 """
 
+
 def makeChange(coins, total):
     """
     Calculate the fewest number of coins needed to meet a given
@@ -12,7 +13,7 @@ def makeChange(coins, total):
 
     Args:
     coins (list): List of coin values available for making change.
-    total (int): The target amount to be achieved using the 
+    total (int): The target amount to be achieved using the
     available coins.
 
     Returns:
@@ -42,7 +43,7 @@ def makeChange(coins, total):
     else:
         return dp[total]
 
-# Example usage
+
 if __name__ == "__main__":
     coins = [1, 2, 25]
     total_amount = 37
