@@ -7,6 +7,7 @@
     0 represents water and 1 represents land.
 """
 
+
 def island_perimeter(grid):
     """
     Calculate the perimeter of an island described by the given grid.
