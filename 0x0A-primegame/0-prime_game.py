@@ -8,6 +8,7 @@ def is_prime(num):
             return False
     return True
 
+
 def isWinner(x, nums):
     if x <= 0 or not nums:
         return None
@@ -30,6 +31,7 @@ def isWinner(x, nums):
         return "Ben"
     else:
         return "Maria"
+
 
 # Example usage
 if __name__ == "__main__":
