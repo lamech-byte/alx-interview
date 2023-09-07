@@ -1,15 +1,32 @@
 #!/usr/bin/python3
 
-""" Prime Game """
+"""
+    Check if a number is prime.
+
+    Args:
+        num (int): The number to check.
+
+    Returns:
+        bool: True if the number is prime, False otherwise.
+    """
 
 
 def isWinner(x, nums):
     """
+    Determine the winner of a game between Maria and Ben.
+
     Args:
-        x: the number of rounds
-        nums: an array of n
+        x (int): The number of rounds to play.
+        nums (list of int): A list of integers representing the
+        set of numbers for each round.
+
     Returns:
-        name of the player that won the most rounds
+        str or None: The name of the player that won the most
+        rounds (either "Maria" or "Ben").
+                     If the winner cannot be determined, returns None.
+
+    Constraints:
+        - x and len(nums) will not be larger than 10,000.
     """
     if not nums or x < 1:
         return None
