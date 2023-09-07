@@ -57,6 +57,7 @@ def isWinner(x, nums):
     else:
         return "Maria"
 
+
 # Example usage
 if __name__ == "__main__":
     print("Winner: {}".format(isWinner(3, [4, 5, 1])))
